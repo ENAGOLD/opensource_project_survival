@@ -38,6 +38,16 @@ A savoir qu'une fois en jeu le joueur est plongé en immertion totale dans un mo
 - UN système de "clearlag" supprimant tous les objets au sol après ne période déffinie afin d'éviter des latances coté server.
 - Un système de sécurité anti-bots , bloquant d'éventuelles attaques de bots ayant pour but de surcharger la capacité du server a traiter les connections entrantes et sortantes.
 - Un système de téléportation entre joueurs via commande.
+- Un système de gestionaire de tchat custom et indépendant de l'affichage vanilla de minecraft.
+- Une tablist custom liée au système de grade.
+- Un système de protection de zone limité en chunks.
+- Plugin de sécurité bloquant toutes les commandes dangereuses de minecraft vanilla.
+- Un système de téléportation aléatoire qui permet au joueur d'être téléporté aléatoirement sur la map.
+- Un Panel administration permetant de gerer les accès au server via différents "modes" tel que le mode maintenance , online ou encore offline.
+- Un système de "kit" journaliers permetants aux joueurs d'acceder a des équipements pour bien débuter.
+- Un système de grade basé sur le fait d'attribuer via la console le grade le plus élevé au gêrant du server afin d'atribuer les grades inferieurs via le système de rank disponible en commandes , rendant imposible tout baypass de permissions.
+- Un système de "home" permetant aux joueurs via une commande d'etre téléporté a l'un des 10 emplacement sauvegardé , a leur guise.
+- Un système de changement de mode de jeu accessible seulement a l'administration du server afin de pouvoir créer de nouvelles map sans les contraintes du mode de jeu survie.
 
 Le but du projet :
 
