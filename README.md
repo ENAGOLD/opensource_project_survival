@@ -37,6 +37,7 @@ A savoir qu'une fois en jeu le joueur est plongé en immertion totale dans un mo
 - Un menu général accésible via la commande /menu , permettant aux joueurs d'accéder a un panel.
 - UN système de "clearlag" supprimant tous les objets au sol après ne période déffinie afin d'éviter des latances coté server.
 - Un système de sécurité anti-bots , bloquant d'éventuelles attaques de bots ayant pour but de surcharger la capacité du server a traiter les connections entrantes et sortantes.
+- Un système de téléportation entre joueurs via commande.
 
 Le but du projet :
 
