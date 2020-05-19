@@ -1,0 +1,91 @@
+#=============================================
+# Tour a monstres
+#=============================================
+
+# /summon minecraft:villager ~ ~ ~ {Profession:5,CustomName:Gardien,CustomNameVisible:1,NoAI:1b,Silent:1,Invulnerable:1,Age:0, Rotation:[60.0f,0.0f],NoAI:1}
+
+
+on rightclick on a villager:
+	if name of entity is "Gardien":
+		cancel event
+		open chest with 1 rows named "           &6Tour oubliée" to player
+		wait 2 ticks
+		format slot 1 of player with book named "&eInformations" with lore "&6Chaque étage de la tour||&6est remplit de monstres||&6que vous devez combattre||&6pour xp et drop des orbes||&6échangeables au pnj||&6contre des boites||&6d'armes et armures" to be unstealable
+		format slot 3 of player with wooden sword named "&2Accéder à la tour" with lore "" to run [make console execute "/tour1 %player%"]
+		format slot 5 of player with chest named "&bBoutique" with lore "&eBoutique permétant||&ed'échanger les orbes||&eque tu possède||&econtre des boites||d'armes et armures rares" to run [make console execute "/btk_orbe %player%"]
+		format slot 7 of player with red wool named "&cFermer" with lore "" to close
+		
+# boutique d orbes
+command /btk_orbe [<player>]:
+	executable by:console
+	trigger:
+		open chest with 1 rows named "           &6Boutique &bOrbes" to arg 1
+		wait 2 ticks
+		format slot 3 of arg 1 with diamond sword named "&bArmes" with lore "" to run [make console execute "/btk_section_armes %arg 1%"]
+		format slot 5 of arg 1 with diamond chestplate named "&cArmures" with lore "" to run [make console execute "/btk_section_armures %arg 1%"]
+	
+	
+# section armes
+command /btk_section_armes [<player>]:
+	executable by:console
+	trigger:
+		open chest with 5 rows named "           &6Boutique &bArmes" to arg 1
+		wait 2 ticks
+		
+
+# section armures	
+command /btk_section_armures [<player>]:
+	executable by:console
+	trigger:
+		open chest with 1 rows named "           &6Boutique &bArmures" to arg 1
+		wait 2 ticks
+		format slot 1 of arg 1 with chest named "&cSet apocalypse" with lore "&7Prix : &e5 000 &bOrbes||&6Légendaire &e✪✪✪||&bBonus : &cRésistance" to close then run [make console execute "/set_apocalypse %arg 1%"]	
+		format slot 3 of arg 1 with chest named "&eSet Hermes" with lore "&7Prix : &e5 000 &bOrbes||&6Légendaire &e✪✪✪||&bBonus : &cVitesse" to close then run [make console execute "/set_hermes %arg 1%"]	
+		format slot 5 of arg 1 with chest named "&bSet Neptune" with lore "&7Prix : &e5 000 &bOrbes||&6Légendaire &e✪✪✪||&bBonus : &cRésistance au feu" to close then run [make console execute "/set_neptune %arg 1%"]	
+		format slot 7 of arg 1 with chest named "&6Set Athéna" with lore "&7Prix : &e5 000 &bOrbes||&6Légendaire &e✪✪✪||&bBonus : &cForce" to close then run [make console execute "/set_athena %arg 1%"]	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+# teleportation 1 er etage de la tour
+command /tour1 [<player>]:
+	executable by:console
+	trigger:
+		teleport arg 1 to {warp.tour1}
+		send action bar from "&bTour oubliée" to arg 1
+		wait 2 seconds
+		send action bar from "&eEtage &41" to arg 1
+		
+# spawners
+
+# /setblock ~ ~-1 ~ mob_spawner 0 replace {SpawnCount:3,MaxNearbyEntities:6,SpawnRange:50,Delay:2,MinSpawnDelay:6,MaxSpawnDelay:12,RequiredPlayerRange:50,SpawnData:{id:"minecraft:zombie",CustomName:"Serviteur",CustomNameVisible:1}}
+
+
+# affichage particules sang sur monstres
+
+#on damage of monster:	
+#	loop players in radius 20 around victim:
+#		show 10 "redstone" particles at location of victim for loop-players offset by 0.1, 1.5, 0.1
+		
+# récompenses drop & PO
+on death of monster:
+	if name of victim is "Serviteur":
+		set {ramdom_orbes.%player%} to a random integer from 1 to 3
+		add 2 to {po.%uuid of attacker%}
+		add {ramdom_orbes.%player%} to {orbes.%attacker%}
+		send action bar from "&7+ &62 &ePièces d'or  &7[&e%{po.%uuid of attacker%}% PO&7]" to attacker
+		wait 1 seconds
+		if {ramdom_orbes.%player%} = 1:
+			send action bar from "&7+ &6%{ramdom_orbes.%player%}% &bOrbe  &7[&e%{orbes.%attacker%}% &bOrbes&7]" to attacker
+			stop
+		send action bar from "&7+ &6%{ramdom_orbes.%player%}% &bOrbes  &7[&e%{orbes.%attacker%}% &bOrbes&7]" to attacker
+		
