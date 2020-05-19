@@ -1,0 +1,36 @@
+on join:
+	if {patchjob2.%player%} = 1:
+		stop
+	else:
+		set {xpjob2.%player%} to 0	
+		set {xpmaxlvljob2.%player%} to 0
+		set {patchjob2.%player%} to 1
+		
+		
+# bugg menu		
+#MickaelB33
+		
+#command /forcetacos [<offline player>]:
+#	trigger:
+#		set {_sac} to chest with 6 rows named "&4Sac &6|| &3Sac &21 &6||"
+#		if {container::&4Sac &6|| &3Sac &21 &6||::%arg 1%} is set:
+#			set {_sac}'s serialized contents to {container::&4Sac &6|| &3Sac &21 &6||::%arg 1%}
+#		open {_sac} to player
+#		set {container::current::%arg 1%} to "&4Sac &6|| &3Sac &21 &6||"
+#		
+#
+#		if {container::current::%arg 1%} is set:
+#			if "%event-inventory%" is "inventory of <none>":
+#				set {container::%{container::current::%arg 1%}%::%arg 1%} to event-inventory's serialized contents
+#
+#command /debugghome <player> <text>:
+#	trigger:
+#		remove arg 2 from {homelist.%arg 1%::*}
+#		set {count_home.%arg 1%} to 10
+		
+#		send "liste : %{homelist.%arg 1%::*}%" to arg 1
+#		send "nombre home %{count_home.%arg 1%}%" to arg 1
+			
+			
+#		send "liste : %{homelist.%arg 1%::*}%" to player
+#		send "nombre home %{count_home.%arg 1%}%" to player
