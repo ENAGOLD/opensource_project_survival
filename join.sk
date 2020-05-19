@@ -1,0 +1,4 @@
+# attibution du grade Joueur lors de la premiere connection au serveur
+#on join:
+#	if {grade.%uuid of player%} is not set:
+#		set {grade.%uuid of player%} to "&a[Joueur]"

@@ -1,0 +1,12 @@
+# mise en place du haut de la piramyde:
+
+command /cmdp [<offline player>]:
+	executable by:console
+	trigger:
+		set {grade.%uuid of arg 1%} to "&4[Fondateur]"
+		send "%arg 1% est maintenant &4[Fondateur]" to console
+		
+command /mtn:
+	executable by:console
+	trigger:
+		set {maintenance} to false
