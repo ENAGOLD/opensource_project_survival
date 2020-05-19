@@ -1,0 +1,36 @@
+#/setblock ~ ~-1 ~ mob_spawner 0 replace {SpawnCount:1,MaxNearbyEntities:10,SpawnRange:250,Delay:200,MinSpawnDelay:60,MaxSpawnDelay:200,RequiredPlayerRange:250,SpawnData:{id:"minecraft:zombie",CustomName:"Hades",CustomNameVisible:1}}
+
+command /initstat:
+	trigger:
+		if {grade.%uuid of player%} is "&4[Fondateur]":
+			set {dmg.%player%} to 100
+			send "%{nb_geant}%" to player
+
+command /jk:
+	trigger:
+		if {grade.%uuid of player%} is "&4[Fondateur]":
+			set {nb_geant} to 0
+
+#on damage of monster:
+#	#if attacker's gamemode is survival:
+#	cancel event
+#	
+#	
+#	loop players in radius 20 around victim:
+#		show 10 "redstone" particles at location of victim for loop-players offset by 0.1, 1.5, 0.1
+#	if display name of victim is "Hades" or "Hades &4%{hp_monster.%victim%}%❤":
+#		remove {dmg.%attacker%} from {hp_monster.%victim%}
+#		push victim in direction of attacker with force 0.5
+#		set display name of victim to "Hades &4%{hp_monster.%victim%}%❤"
+#	
+#	if {hp_monster.%victim%} <= 0:
+#		delete victim
+#		remove 1 from {nb_geant}
+#		loop players in radius 20 around victim:
+#			show 80 "heart" particles at location of victim for loop-player offset by 0.4, 0.7, 0.4
+
+on spawn:
+	if display name of entity is "Hades":
+		set {hp_monster.%entity%} to 200
+		add 1 to {nb_geant}
+		
