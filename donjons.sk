@@ -1,0 +1,13 @@
+#==========================================
+# donjon ancestrale
+#==========================================
+
+
+# commande de test :
+command /djoin:
+	trigger:
+		teleport player to {warp.djapo1}
+		set {djapo1.%player%} to true
+		
+
+		
